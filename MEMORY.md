@@ -42,7 +42,7 @@
 - Branches: main (full MVP loop), feature/csv-export (still unmerged)
 
 ## NVIDIA GB10
-- IP: `192.168.100.3`, hostname `promaxgb10-4c73`, user `sebasjay` / `210322`
+- IP: `192.168.100.3`, hostname `promaxgb10-4c73`, user `sebasjay` / `REDACTED_GB10_PW`
 - Ubuntu 24.04 ARM64, 20-core, 119GB unified RAM, 3.4TB NVMe, CUDA 13.0
 - Ollama v0.17.1-rc2 at `http://192.168.100.3:11434`
 - **Qwen 3.5 122B-A10B**: 81GB, 21 tok/s — PRIMARY MODEL for chat + parsing
@@ -59,7 +59,7 @@
 - Access: `ssh -i ~/.ssh/id_ed25519 openlabel@192.168.100.238`
 
 ## Infrastructure
-- Synology NAS: 192.168.100.200, SSH user henry / NjO#@Fl5
+- Synology NAS: 192.168.100.200, SSH user henry / REDACTED_NAS_PW
 - Docker needs `sudo -S` + full path `/usr/local/bin/docker`
 - **openlabel-v3-postgres**: dedicated container, port 5433, user `openlabel_v3` / `OL3_xK9mP2vR7nQ`, DB `openlabel_v3`
 - Old container `openlabel-postgres` (port 25432) has other project data — DO NOT TOUCH
@@ -168,7 +168,7 @@
 - When Henry auto-refreshes, all agents get the new token instantly
 
 ## Infrastructure
-- Synology NAS: 192.168.100.200, SSH user henry / NjO#@Fl5
+- Synology NAS: 192.168.100.200, SSH user henry / REDACTED_NAS_PW
 - Docker needs `sudo -S` + full path `/usr/local/bin/docker`
 - **openlabel-app**: node:20-slim container, --network host, workspace at /volume1/docker/claude-code-workspace
 - **openlabel-v3-postgres**: port 5433, user `openlabel_v3` / `OL3_xK9mP2vR7nQ`, DB `openlabel_v3`
@@ -198,4 +198,4 @@
 - **Don't adopt framework versions before auth providers support them.** Next.js 16 broke Clerk — 4 days old, no Clerk support yet.
 - **Every new backend route needs TWO frontend changes**: (1) rewrite in `next.config.ts`, (2) public route in `middleware.ts`. Miss either = 404 or auth redirect.
 - **Dex (Codex 5.3) is viable for frontend.** 7/10 first pass, fixes cleanly on review. Main weakness: field name mismatches with Prisma schema. Include exact field names in specs.
-- **Clerk middleware intercepts before Next.js rewrites.** Backend-proxied API routes must be in `isPublicRoute` — backend handles its own auth via Clerk session cookies.
+- **Clerk middleware intercepts before Next.js rewrites.** Backend-proxied API routes must be in `isPublicRoute` — backend handles its own auth via
