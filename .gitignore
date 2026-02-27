@@ -1,0 +1,21 @@
+# Dev repos (backed up separately)
+dev/
+node_modules/
+.npm/
+.cache/
+.config/
+.local/
+.ssh/
+.gnupg/
+.nx/
+
+# Large/binary files
+Library/
+*.tar.gz
+*.zip
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Sensitive (tokens in MEMORY.md are intentional — private repo)
