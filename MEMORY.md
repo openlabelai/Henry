@@ -139,7 +139,14 @@
 - Closest competitor: Claimy (Paris, $1.8M, France/UK only, publishing only)
 - Best acquisition hook: free MLC black box scan
 
-## Current Work (2026-02-27)
+## Org Migration Lesson (2026-02-28)
+- **Every frontend fetch call must send X-Org-Id header** — created `orgFetch()` in api.ts and `OrgProvider` in root layout
+- OrgProvider auto-fetches user's org on load, sets `activeOrgId` in localStorage
+- HomePanel needs retry loop — races with OrgProvider on first load
+- `backend/src/services/cache.ts` — in-memory cache with TTL, used for analytics overview (5 min)
+- Security audit from Codex: 3 real findings (IDOR on chat, TOCTOU on member mutations, webhook body parsing), 4 hallucinated
+
+## Current Work (2026-02-28)
 - Query Layer V2: MERGED to main ✅ (8 new endpoints, 236 tests)
 - Release Module V1: MERGED to main ✅ (templates, releases, milestones, calendar, 240 tests)
 - Frontend Catalog Redesign: MERGED to main ✅ (unified earnings page, group-by, detail pages)
@@ -161,6 +168,15 @@
 - **DB only has 729 test entries** — original data wiped by force-reset, need re-upload
 - **vLLM nightly works** but OOM at BF16 — waiting for quantized safetensors (GPTQ/AWQ)
 - **25 Prisma models, 797 test cases, 20 route files, 60+ endpoints**
+- **Org migration MERGED** ✅ — all data org-scoped, all routes use resolveOrgContext()
+- **Security fixes MERGED** ✅ — chat IDOR, TOCTOU member mutations, webhook body parsing
+- **Forensic scan complete** — 240 findings (78 critical, 106 warning, 56 info) from 12 months ADA data
+- **Analytics cache** — 5-min in-memory TTL on overview endpoint
+- **OrgProvider** — auto-sets activeOrgId in localStorage on app load
+- **orgFetch()** — all api.ts calls inject X-Org-Id automatically
+- **Root URL** — `/` renders chat workspace (home panel) full-bleed, no redirect
+- **YC v4 drafted** — `Obsidian/Henry/YC-APPLICATION-DRAFT-V4.md`, awaiting Seb review
+- `main` at commit `dbf13af`
 
 ## Sub-Agent Auth Fix (2026-02-22)
 - OAuth tokens expire every ~12h, sub-agents couldn't self-refresh
