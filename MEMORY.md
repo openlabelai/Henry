@@ -33,7 +33,7 @@
 
 ## MVP Loop (Complete)
 - Upload → Detect → Parse → Store in Postgres → View in Catalog
-- Backend: Express on :3001, frontend: Next.js on :3000, DB: Synology Postgres :5433
+- Backend: Express on :3001, frontend: Next.js on :3000, DB: GB10 Postgres :5433
 - Revenue stored as Decimal(18,8) — financial precision
 
 ## Git
@@ -157,7 +157,7 @@
 - **Clerk Auth: WORKING** ✅ — middleware.ts on Next.js 15.3.3, explicit redirectToSignIn()
 - **Chat as default route** ✅ — `/` → `/chat`, sidebar nav to analytics/earnings/catalog/upload
 - **Iframe embed fix** ✅ — NavBar hides via `?embed=1` param, no duplicate headers
-- App running on Synology Docker at http://192.168.100.200:3000
+- App running on GB10 (192.168.100.3) — full stack: backend, frontend, Ollama, Postgres all on one box
 - 3 reports uploaded: 2 ADA (Dec 2025, Jan 2026) + 1 DistroKid (Apr 2024)
 - STT/voice notes working via OpenAI gpt-4o-mini-transcribe on Telegram
 - **Next.js pinned to 15.3.3** — Clerk doesn't support Next 16 proxy.ts yet (upgrade when they do)
@@ -186,10 +186,9 @@
 ## Infrastructure
 - Synology NAS: 192.168.100.200, SSH user henry / REDACTED_NAS_PW
 - Docker needs `sudo -S` + full path `/usr/local/bin/docker`
-- **openlabel-app**: node:20-slim container, --network host, workspace at /volume1/docker/claude-code-workspace
+- **Full stack on GB10** (192.168.100.3) — app, Postgres, Redis, Ollama all on one box
 - **openlabel-v3-postgres**: port 5433, user `openlabel_v3` / `OL3_xK9mP2vR7nQ`, DB `openlabel_v3`
 - **openlabel-v3-redis**: port 6380
-- After container restart: must reinstall git + openssl, then start backend + frontend manually
 - Backend .env needs CLERK_PUBLISHABLE_KEY in addition to SECRET_KEY
 
 ## Discord as System of Record
