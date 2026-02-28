@@ -164,6 +164,8 @@
 - **Backend wired to GB10 Ollama** — native `/api/chat` (not `/v1` which is broken for Qwen 3.5 thinking)
 - **Ollama optimized**: flash attention, 4 parallel, 0.0.0.0 bind, 24h keep-alive → 24.5 tok/s
 - **Linus upgraded to Opus 4.6** (was Sonnet 4) — approved by Seb 2026-02-27
+- **LLM switched to MiniMax M1** (cloud) — Ollama `/v1` broken with Qwen 3.5 thinking mode
+- **Parser coverage**: ADA, DistroKid, ASCAP Pub Intl, Kobalt Publishing (4 parsers live)
 - Frontend for forensics + entities: PLANNING (Jaques researching UX patterns)
 - **DB only has 729 test entries** — original data wiped by force-reset, need re-upload
 - **vLLM nightly works** but OOM at BF16 — waiting for quantized safetensors (GPTQ/AWQ)
@@ -176,7 +178,17 @@
 - **orgFetch()** — all api.ts calls inject X-Org-Id automatically
 - **Root URL** — `/` renders chat workspace (home panel) full-bleed, no redirect
 - **YC v4 drafted** — `Obsidian/Henry/YC-APPLICATION-DRAFT-V4.md`, awaiting Seb review
-- `main` at commit `dbf13af`
+- `main` at commit `30684e3`
+- **Kobalt Parser MERGED** ✅ — 4th parser (ADA, DistroKid, ASCAP, Kobalt). Publishing side. 9 files validated, 25 tests.
+- **Materialized Org Stats MERGED** ✅ — cache.ts deleted, 6 fields on Organization model, atomic refresh
+- **Upload UX: Global UploadProvider** — uploads persist across page navigation, floating indicator bottom-right
+- **Masters/Publishing Revenue Split** — trend chart shows two lines (ISRC masters vs ISWC publishing)
+- **MLC API access applied** — awaiting credentials. REST API at `public-api.themlc.com`, JWT auth, `POST /search/recordings` for ISRC→ISWC check
+- **Kobalt period fix** — report period from filename, not entry min/max (entries have historical dates)
+- **5-Layer Forensic Spec** documented in `OBSIDIAN/Henry/FORENSIC-5-LAYER-SPEC.md`
+- **Claim Generation Pipeline** documented in `OBSIDIAN/Henry/CLAIM-GENERATION-PIPELINE.md`
+- **MLC Scanner spec** at `docs/TASK-MLC-SCANNER-V1.md` — highest priority acquisition feature, blocked on API credentials
+- **README is now project memory** — update with every merge (per Seb's instruction, added to AGENTS.md)
 
 ## Sub-Agent Auth Fix (2026-02-22)
 - OAuth tokens expire every ~12h, sub-agents couldn't self-refresh
