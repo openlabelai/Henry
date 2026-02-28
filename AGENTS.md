@@ -215,6 +215,15 @@ Think of it like a human reviewing their journal and updating their mental model
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 
+## README as Memory
+
+**Every merge to `main` must include a README.md update.** The README is a living changelog and project memory:
+- Update the changelog with date, feature name, what changed, commit hash
+- Update parser coverage table when parsers are added
+- Update forensic layer status when layers progress
+- Update any section that's now stale (tech stack, test counts, model counts, etc.)
+- Be very descriptive — this is additional memory for future sessions
+
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
