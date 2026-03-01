@@ -178,7 +178,13 @@
 - **orgFetch()** — all api.ts calls inject X-Org-Id automatically
 - **Root URL** — `/` renders chat workspace (home panel) full-bleed, no redirect
 - **YC v4 drafted** — `Obsidian/Henry/YC-APPLICATION-DRAFT-V4.md`, awaiting Seb review
-- `main` at commit `30684e3`
+- `main` at commit `dfcdf1c`
+- **Shared roster types in `@openlabel/shared`** — all API response types live there now, prevents field-name drift
+- **Analytics + Earnings render inline** (not iframe) in chat workspace
+- **Artist Roster Phase 1 live** — backend + frontend, primitive but functional
+- **Redis container name is `openlabel-redis-1`** (not `openlabel-v3-redis`), port 6380
+- **Dex (Codex) is a solid code reviewer** — caught getId recursion + API mismatches, score 4/10 on Linus's PR
+- **Rule: all new API response types go in `shared/src/` first** — TypeScript catches mismatches at compile time
 - **Kobalt Parser MERGED** ✅ — 4th parser (ADA, DistroKid, ASCAP, Kobalt). Publishing side. 9 files validated, 25 tests.
 - **Materialized Org Stats MERGED** ✅ — cache.ts deleted, 6 fields on Organization model, atomic refresh
 - **Upload UX: Global UploadProvider** — uploads persist across page navigation, floating indicator bottom-right
