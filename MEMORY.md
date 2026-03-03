@@ -186,6 +186,13 @@
 - **Dex (Codex) is a solid code reviewer** — caught getId recursion + API mismatches, score 4/10 on Linus's PR
 - **Rule: all new API response types go in `shared/src/` first** — TypeScript catches mismatches at compile time
 - **Kobalt Parser MERGED** ✅ — 4th parser (ADA, DistroKid, ASCAP, Kobalt). Publishing side. 9 files validated, 25 tests.
+- **R2 Presigned Upload Pipeline MERGED** ✅ — Browser uploads directly to Cloudflare R2 via presigned URLs. Bypasses Next.js buffering + CF Tunnel limits. Commit `f267bca`.
+- **X Analytics Chart Restyle MERGED** ✅ — CSS progress bars, gradient fills, pill selectors, country flags, consistent card styling. Commit `07d73ec`.
+- **R2 bucket:** `openlabel-uploads`, Account ID `7b18647c39ee43362004a4357cce5e01`
+- **R2 CORS fix:** Don't sign ContentType in presigned URL (causes 403 mismatch), `AllowedHeaders: ['*']`
+- **`next start` production mode restored** — R2 eliminates the body buffering problem that forced `next dev`
+- **DB has only ADA data** (146K entries, 235 territories) — Kobalt not re-uploaded since wipe. 9 Kobalt reports on GB10 disk.
+- **Qwen 3.5 4B/9B released** — potential GPT-4o-mini replacement for chat + MiniMax replacement for AI parser
 - **Materialized Org Stats MERGED** ✅ — cache.ts deleted, 6 fields on Organization model, atomic refresh
 - **Upload UX: Global UploadProvider** — uploads persist across page navigation, floating indicator bottom-right
 - **Masters/Publishing Revenue Split** — trend chart shows two lines (ISRC masters vs ISWC publishing)
