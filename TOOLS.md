@@ -21,14 +21,14 @@
 - Architecture and design decisions are mine alone
 - I define tasks with clear specs; agents implement, not decide
 
-### Dev Loop (inspired by Elvis Sun's agent swarm)
+### Dev Loop
 1. Seb requests feature / beta tester reports issue
-2. Henry specs the task with business context from AGENT-CONTEXT.md
-3. Agent (Linus/Dex) implements on feature branch
-4. CI runs: lint + typecheck + tests + build
-5. Dex (Codex) reviews the PR (when available)
-6. Henry does final architectural review
-7. Seb approves merge
+2. Henry specs the task with business context
+3. Linus implements on feature branch
+4. **Dex reviews (code quality)** — field mismatches, type safety, error handling, dead code, test gaps
+5. **Henry reviews (architecture)** — spec compliance, patterns, design system, security, integration
+6. Henry merges to main
+7. Seb approves deploy
 8. Same-day delivery when possible — speed converts leads
 
 ### CI/CD
