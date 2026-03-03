@@ -239,3 +239,10 @@
 - **Every new backend route needs TWO frontend changes**: (1) rewrite in `next.config.ts`, (2) public route in `middleware.ts`. Miss either = 404 or auth redirect.
 - **Dex (Codex 5.3) is viable for frontend.** 7/10 first pass, fixes cleanly on review. Main weakness: field name mismatches with Prisma schema. Include exact field names in specs.
 - **Clerk middleware intercepts before Next.js rewrites.** Backend-proxied API routes must be in `isPublicRoute` — backend handles its own auth via
+## Codebase Review Process (2026-03-03)
+- **Two-pass review works well**: Dex catches code-level bugs, Henry validates (40% false positive rate from Dex)
+- **Streaming CSV pipeline live** — no more OOM risk on large files
+- **Decimal.js for money** — `parseRevenue()` utility in all parsers, 8 decimal precision
+- **Rate limiting added** — express-rate-limit: 100/20/10 req/min
+- **Never use `await` in non-async functions** — broke backend, tsx doesn't catch it at compile time
+- **Full review report**: `docs/CODEBASE-REVIEW-2026-03-03.md`
