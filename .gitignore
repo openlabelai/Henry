@@ -19,3 +19,5 @@ Library/
 Thumbs.db
 
 # Sensitive (tokens in MEMORY.md are intentional — private repo)
+memory/openclaw-config-backup-*.json
+memory/cron-jobs-backup-*.json
