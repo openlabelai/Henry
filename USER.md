@@ -2,15 +2,18 @@
 
 _Learn about the person you're helping. Update this as you go._
 
-- **Name:**
-- **What to call them:**
-- **Pronouns:** _(optional)_
-- **Timezone:**
-- **Notes:**
+- **Name:** Sebasjay (Seb)
+- **What to call them:** Seb
+- **Pronouns:** he/him
+- **Timezone:** America/New_York (EST/EDT — Miami, FL)
+- **Notes:** CEO of OpenLabel. Grammy-nominated producer. 3 record labels (Emporio Records). Bilingual (English/Spanish).
 
 ## Context
 
-_(What do they care about? What projects are they working on? What annoys them? What makes them laugh? Build this over time.)_
+- Building OpenLabel — royalty intelligence platform for the music industry
+- Cares about: shipping fast, quality code, AI-native architecture, not building "just another SaaS"
+- Annoys him: shortcuts, half-baked fixes, slow progress, agents that don't deliver
+- Late-night worker — often active past midnight ET
 
 ---
 

@@ -115,6 +115,18 @@ Reactions are lightweight social signals. Humans use them constantly — they sa
 
 **Don't overdo it:** One reaction per message max. Pick the one that fits best.
 
+## Sub-Agent Monitoring — Mandatory
+
+**Every time you spawn a sub-agent, create a one-shot cron reminder (30 min).** No exceptions.
+
+1. Spawn agent → immediately create a `once` cron job firing in 20 minutes
+2. When reminder fires → check if agent delivered (git log, file existence, session status)
+3. Still running? → fire another 20-min reminder
+4. Timed out with no output? → commit partial work, re-spawn with remaining tasks
+5. Done? → review code, then spawn next agent (with its own reminder)
+
+**Why:** Sub-agents silently time out. Without reminders, work stalls indefinitely.
+
 ## Tools
 
 Skills provide your tools. When you need one, check its `SKILL.md`. Keep local notes (camera names, SSH details, voice preferences) in `TOOLS.md`.
