@@ -1,0 +1,71 @@
+# Current Work
+
+## Current Work (2026-02-28)
+- Query Layer V2: MERGED to main ✅ (8 new endpoints, 236 tests)
+- Release Module V1: MERGED to main ✅ (templates, releases, milestones, calendar, 240 tests)
+- Frontend Catalog Redesign: MERGED to main ✅ (unified earnings page, group-by, detail pages)
+- Royalty Side Tagging: MERGED to main ✅ (25 new tests, label/publishing separation complete)
+- Entity Resolution V1: MERGED to main ✅ (canonical tracks/artists, ISRC/fuzzy matching, 228 tests)
+- Forensic Intelligence V1: MERGED to main ✅ (rate-drop + period-anomaly, 470 tests)
+- AI Parser Skill: DESIGNING 🔮 (spec in progress)
+- **Clerk Auth: WORKING** ✅ — middleware.ts on Next.js 15.3.3, explicit redirectToSignIn()
+- **Chat as default route** ✅ — `/` → `/chat`, sidebar nav to analytics/earnings/catalog/upload
+- **Iframe embed fix** ✅ — NavBar hides via `?embed=1` param, no duplicate headers
+- App running on GB10 (192.168.100.3) — full stack: backend, frontend, Ollama, Postgres all on one box
+- 3 reports uploaded: 2 ADA (Dec 2025, Jan 2026) + 1 DistroKid (Apr 2024)
+- STT/voice notes working via OpenAI gpt-4o-mini-transcribe on Telegram
+- **Next.js pinned to 15.3.3** — Clerk doesn't support Next 16 proxy.ts yet (upgrade when they do)
+- **Backend wired to GB10 Ollama** — native `/api/chat` (not `/v1` which is broken for Qwen 3.5 thinking)
+- **Ollama optimized**: flash attention, 4 parallel, 0.0.0.0 bind, 24h keep-alive → 24.5 tok/s
+- **Linus upgraded to Opus 4.6** (was Sonnet 4) — approved by Seb 2026-02-27
+- **LLM switched to MiniMax M1** (cloud) — Ollama `/v1` broken with Qwen 3.5 thinking mode
+- **Parser coverage**: ADA, DistroKid, ASCAP Pub Intl, Kobalt Publishing (4 parsers live)
+- Frontend for forensics + entities: PLANNING (Jaques researching UX patterns)
+- **DB only has 729 test entries** — original data wiped by force-reset, need re-upload
+- **vLLM nightly works** but OOM at BF16 — waiting for quantized safetensors (GPTQ/AWQ)
+- **25 Prisma models, 797 test cases, 20 route files, 60+ endpoints**
+- **Org migration MERGED** ✅ — all data org-scoped, all routes use resolveOrgContext()
+- **Security fixes MERGED** ✅ — chat IDOR, TOCTOU member mutations, webhook body parsing
+- **Forensic scan complete** — 240 findings (78 critical, 106 warning, 56 info) from 12 months ADA data
+- **Analytics cache** — 5-min in-memory TTL on overview endpoint
+- **OrgProvider** — auto-sets activeOrgId in localStorage on app load
+- **orgFetch()** — all api.ts calls inject X-Org-Id automatically
+- **Root URL** — `/` renders chat workspace (home panel) full-bleed, no redirect
+- **YC v4 drafted** — `Obsidian/Henry/YC-APPLICATION-DRAFT-V4.md`, awaiting Seb review
+- `main` at commit `dfcdf1c`
+- **Shared roster types in `@openlabel/shared`** — all API response types live there now, prevents field-name drift
+- **Analytics + Earnings render inline** (not iframe) in chat workspace
+- **Artist Roster Phase 1 live** — backend + frontend, primitive but functional
+- **Redis container name is `openlabel-redis-1`** (not `openlabel-v3-redis`), port 6380
+- **Dex (Codex) is a solid code reviewer** — caught getId recursion + API mismatches, score 4/10 on Linus's PR
+- **Rule: all new API response types go in `shared/src/` first** — TypeScript catches mismatches at compile time
+- **Kobalt Parser MERGED** ✅ — 4th parser (ADA, DistroKid, ASCAP, Kobalt). Publishing side. 9 files validated, 25 tests.
+- **R2 Presigned Upload Pipeline MERGED** ✅ — Browser uploads directly to Cloudflare R2 via presigned URLs. Bypasses Next.js buffering + CF Tunnel limits. Commit `f267bca`.
+- **X Analytics Chart Restyle MERGED** ✅ — CSS progress bars, gradient fills, pill selectors, country flags, consistent card styling. Commit `07d73ec`.
+- **R2 bucket:** `openlabel-uploads`, Account ID `7b18647c39ee43362004a4357cce5e01`
+- **R2 CORS fix:** Don't sign ContentType in presigned URL (causes 403 mismatch), `AllowedHeaders: ['*']`
+- **`next start` production mode restored** — R2 eliminates the body buffering problem that forced `next dev`
+- **DB has only ADA data** (146K entries, 235 territories) — Kobalt not re-uploaded since wipe. 9 Kobalt reports on GB10 disk.
+- **Qwen 3.5 4B/9B released** — potential GPT-4o-mini replacement for chat + MiniMax replacement for AI parser
+- **Materialized Org Stats MERGED** ✅ — cache.ts deleted, 6 fields on Organization model, atomic refresh
+- **Upload UX: Global UploadProvider** — uploads persist across page navigation, floating indicator bottom-right
+- **Masters/Publishing Revenue Split** — trend chart shows two lines (ISRC masters vs ISWC publishing)
+- **MLC API access applied** — awaiting credentials. REST API at `public-api.themlc.com`, JWT auth, `POST /search/recordings` for ISRC→ISWC check
+- **Kobalt period fix** — report period from filename, not entry min/max (entries have historical dates)
+- **5-Layer Forensic Spec** documented in `OBSIDIAN/Henry/FORENSIC-5-LAYER-SPEC.md`
+- **Claim Generation Pipeline** documented in `OBSIDIAN/Henry/CLAIM-GENERATION-PIPELINE.md`
+- **MLC Scanner spec** at `docs/TASK-MLC-SCANNER-V1.md` — highest priority acquisition feature, blocked on API credentials
+- **README is now project memory** — update with every merge (per Seb's instruction, added to AGENTS.md)
+
+## Spotify Catalog (2026-03-06)
+- Catalog pull IS working — 1,616 tracks pulled across all artists (before cleanup)
+- Fixed: deletion cascade now removes CanonicalArtist + SpotifyCatalogTrack when roster artist is deleted
+- Cleaned up 7 orphaned CanonicalArtists with 1,017 stale tracks
+- Next: Track selection page (choose which tracks to import after pull)
+- Next: Enrichment (store album art in R2, proper Album model, surface data across app)
+- Next: MLC Scanner needs a frontend
+
+## Henry on Opus 4.6 (2026-03-06)
+- Updated both openclaw.json files to set henry model to anthropic/claude-opus-4-6
+- Had to add opus model to allowed models list AND restart gateway (kill -HUP PID 931)
+- Sub-agents stay on Sonnet for execution
