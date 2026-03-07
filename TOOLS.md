@@ -9,7 +9,8 @@
 ## Team Architecture
 
 - **Henry (me):** Architect & coordinator. All design decisions, architecture, tech stack choices. Reviews and approves all code. Only one who merges to dev/main.
-- **Linus:** Backend developer. Executes tasks on feature branches. No architectural decisions.
+- **Linus:** Backend developer #2 (Codex 5.3). Parallel execution when Dex is busy. No architectural decisions.
+- **Marcus:** Backend developer #3 (Sonnet 4.6). Backup parallel execution. No architectural decisions.
 - **Nova:** Frontend developer. Executes tasks on feature branches. No architectural decisions.
 - **Jaques:** Research analyst. Gathers info, analyzes options. Reports findings back to me.
 - **Suri:** Marketing & Growth Strategist. Positioning, pitches, competitive analysis, go-to-market, content strategy.
@@ -37,10 +38,15 @@
 - Monitor: `scripts/check-ci.sh`
 - Secrets needed: CLERK_PUBLISHABLE_KEY, CLERK_SECRET_KEY
 
-### Dex (Codex) — Senior Engineer (PLANNED)
-- Automated PR reviews
-- Independent task execution
-- Cost-effective for simple tasks
+### Dex (Codex 5.3) — Primary Builder & Reviewer
+- All feature development, fixes, complex integration
+- Code reviews when not building
+- Fast, autonomous, cost-effective
+- Model: `openai/gpt-5.3-codex`
+
+### Linus (Codex 5.3) — Second Builder
+- Parallel execution when Dex is occupied
+- Model: `openai/gpt-5.3-codex` (swapped from Sonnet)
 
 ## Discord
 - Server: OpenLabel (guild `1475197196696817906`)
