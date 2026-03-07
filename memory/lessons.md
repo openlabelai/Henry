@@ -26,4 +26,11 @@
 - **Decimal.js for money** — `parseRevenue()` utility in all parsers, 8 decimal precision
 - **Rate limiting added** — express-rate-limit: 100/20/10 req/min
 - **Never use `await` in non-async functions** — broke backend, tsx doesn't catch it at compile time
+- **AI SDK v6 `createOpenAI` is NOT compatible with MiniMax M1** — use raw fetch + manual SSE emission instead
+- **Next.js dev mode buffers SSE/streaming through rewrite proxy** — always use production mode (`next build && next start`) for streaming features
+- **Root layout is a Server Component** — can't use `next/dynamic` with `ssr: false` directly. Wrap in a `'use client'` loader component.
+- **`export const dynamic = 'force-dynamic'` conflicts with `import dynamic from 'next/dynamic'`** — use different name or wrapper pattern
+- **Always test LLM integrations with raw fetch BEFORE wrapping in SDK** — SDK abstractions hide incompatibilities
+- **`DefaultChatTransport` (ai v6) expects `text-start`/`text-delta`/`text-end` JSON event stream** — not the `0:` data stream protocol
+- **Multiple deploys = zombie processes** — always `fuser -k <port>/tcp` before starting new processes on GB10
 - **Full review report**: `docs/CODEBASE-REVIEW-2026-03-03.md`
