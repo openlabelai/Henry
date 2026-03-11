@@ -34,3 +34,19 @@
 - **`DefaultChatTransport` (ai v6) expects `text-start`/`text-delta`/`text-end` JSON event stream** — not the `0:` data stream protocol
 - **Multiple deploys = zombie processes** — always `fuser -k <port>/tcp` before starting new processes on GB10
 - **Full review report**: `docs/CODEBASE-REVIEW-2026-03-03.md`
+
+## AI SDK jsonSchema() Bug (2026-03-10)
+- `jsonSchema()` from `ai@6.0.116` does NOT work with `@ai-sdk/openai@3.0.41` when `zod@4.x` is installed
+- The OpenAI provider's serialization strips `type` and `properties` from jsonSchema wrapper objects
+- **Always use `z.object()` with `import { z } from 'zod/v4'`** for tool parameters
+- Never trust that a schema wrapper "just works" — log the actual HTTP request body to verify
+
+## DefaultChatTransport Headers (2026-03-10)  
+- `headers: orgHeaders()` evaluates once at mount — use `headers: () => orgHeaders()` for dynamic evaluation
+- Always verify custom headers are actually sent by checking the server-side request, not just the client code
+
+## GB10 Process Management (2026-03-10)
+- tsx watch spawns child node processes — `pkill -f tsx` may not kill children
+- Always check `fuser <port>/tcp` to find the actual process serving the port
+- Multiple tsx watch instances can run simultaneously, only one binds the port
+- Use `killall -9 tsx node` to ensure clean state before restart

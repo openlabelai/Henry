@@ -24,6 +24,20 @@
 - Add durable learnings to the category files above (not daily logs).
 - Keep pointers current when files move.
 
+## Vercel Access (recovered 2026-03-10)
+- Token: `REDACTED_VERCEL_TOKEN`
+- Project: `openlabel-site` / `prj_LWYLu4MeNbtQrCr1PCS7btlq6rlG`
+- Team: `team_wc5nnLgjmG2ewgHbphA4vkuv`
+
+## Prisma Field Name Gotchas
+- MLC: `estimatedUnclaimed` (NOT estimatedUnclaimedUsd)
+- RoyaltyEntry: `side` enum LABEL|PUBLISHING (NOT royaltyType), `revenue` (NOT amount)
+
+## Chat Architecture
+- `/api/chat` → full agent via chatAgent.ts (tools, context, benchmarks)
+- `/api/chat/stream` → was broken (raw MiniMax pass-through), fixed in OPE-18 to use chatStream()
+- chatAgent.ts has: TOOL_DEFINITIONS, executeTool, buildUserContext, buildBenchmarks, domainKnowledge
+
 ## Daily Notes Reminder
 - Raw chronology stays in `memory/YYYY-MM-DD.md`.
 - Curated long-term knowledge stays in indexed memory files.
