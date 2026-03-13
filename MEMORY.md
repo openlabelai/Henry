@@ -38,6 +38,24 @@
 - `/api/chat/stream` → was broken (raw MiniMax pass-through), fixed in OPE-18 to use chatStream()
 - chatAgent.ts has: TOOL_DEFINITIONS, executeTool, buildUserContext, buildBenchmarks, domainKnowledge
 
+## Roster Artist Backfill
+- `rosterLinkingService.ts` — `relinkEntriesForRosterArtist()` auto-links unlinked RoyaltyEntry rows when artist is created/updated
+- `relinkAllEntriesForOrg()` for admin bulk repair
+- Hooked into `createRosterArtist()` and `updateRosterArtist()` in `rosterService.ts`
+
+## Entity Cleanup on Report Delete
+- `cleanupOrphanedEntities(orgId)` in `forensicCleanupService.ts`
+- Deletes orphaned CanonicalTrack/CanonicalArtist when no RoyaltyEntry references them
+- Called in `catalogStore.delete()` after forensic invalidation
+
+## Chat Widget State
+- Zustand store + AI SDK `useChat` have SEPARATE message states — must clear both
+- `handleClearChat()` calls both `clearMessages()` (Zustand) and `setChatMessages([])` (AI SDK)
+- Auth watcher: `useEffect` on `userId`/`orgId` from `useAuth()` with `authSessionRef` to skip first render
+
+## OpenAI API
+- GPT-4o-mini key quota exceeded as of 2026-03-13 — chat agent broken until credits added
+
 ## Daily Notes Reminder
 - Raw chronology stays in `memory/YYYY-MM-DD.md`.
 - Curated long-term knowledge stays in indexed memory files.

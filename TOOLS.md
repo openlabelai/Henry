@@ -38,15 +38,15 @@
 - Monitor: `scripts/check-ci.sh`
 - Secrets needed: CLERK_PUBLISHABLE_KEY, CLERK_SECRET_KEY
 
-### Dex (Codex 5.3) — Primary Builder & Reviewer
+### Dex (GPT 5.4) — Primary Builder & Reviewer
 - All feature development, fixes, complex integration
 - Code reviews when not building
 - Fast, autonomous, cost-effective
-- Model: `openai/gpt-5.3-codex`
+- Model: `openai/gpt-5.4`
 
-### Linus (Codex 5.3) — Second Builder
+### Linus (GPT 5.4) — Second Builder
 - Parallel execution when Dex is occupied
-- Model: `openai/gpt-5.3-codex` (swapped from Sonnet)
+- Model: `openai/gpt-5.4`
 
 ## Discord
 - Server: OpenLabel (guild `1475197196696817906`)
